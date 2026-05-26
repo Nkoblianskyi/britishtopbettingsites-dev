@@ -196,7 +196,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="font-heading font-extrabold text-2xl md:text-4xl text-white">Privacy Policy</h1>
           </div>
           <p className="text-white/40 text-xs ml-12">
-            britishtopbettingsites.com &middot; Last updated: January {year}
+            britishtopbettingsites.com &middot; Last updated: {year}
           </p>
         </div>
       </div>
