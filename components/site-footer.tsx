@@ -31,7 +31,7 @@ const safetyOrgs = [
     height: 36,
   },
   {
-    src:    "/Gambling_Commission_logo.png",
+    src:    "/commission.png",
     alt:    "UK Gambling Commission",
     href:   "https://www.gamblingcommission.gov.uk/",
     width:  120,
