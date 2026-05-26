@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── British Top Betting Sites — light sports theme ── */
+    --background:        0    0%   97%;   /* #f7f7f7 — near-white */
+    --foreground:        222  24%  14%;   /* #161d2e — almost black */
+
+    --card:              0    0%  100%;   /* #ffffff — pure white cards */
+    --card-foreground:   222  24%  14%;
+
+    --popover:           0    0%  100%;
+    --popover-foreground: 222  24%  14%;
+
+    --surface:           220  18%  94%;   /* #edf0f5 — lifted panel */
+
+    /* Electric blue — primary CTA */
+    --primary:           221  83%  53%;   /* #2563eb */
+    --primary-foreground: 0    0%  100%;
+
+    /* Light slate — secondary */
+    --secondary:         220  18%  94%;
+    --secondary-foreground: 222  24%  30%;
+
+    --muted:             220  16%  92%;
+    --muted-foreground:  220  10%  52%;   /* #7a8394 */
+
+    --accent:            24   95%  53%;   /* #f97316 — orange score accent */
+    --accent-foreground: 0    0%  100%;
+
+    /* Score/badge amber */
+    --highlight:         38   95%  50%;   /* #f59e0b */
+    --highlight-foreground: 222  24%  14%;
+
+    /* Deep navy — header / top bar */
+    --navy:              222  47%  11%;   /* #0b1120 */
+    --navy-foreground:   210  20%  92%;
+
+    /* Danger */
+    --destructive:       0    72%  54%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border:            220  16%  88%;   /* #d8dde8 — light border */
+    --input:             220  16%  88%;
+    --ring:              221  83%  53%;   /* blue ring */
+    --radius:            0.75rem;
+
+    /* Live badge */
+    --live:              148  72%  40%;
+    --live-foreground:   0    0%  100%;
+  }
+}
+
+@layer base {
+  * { @apply border-border box-border; }
+  body { @apply bg-background text-foreground; }
+  h1, h2, h3, h4 { @apply font-heading; }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Blue ring for rank #1 card ── */
+.rank-1-glow {
+  box-shadow:
+    0 0 0 2px hsl(221 83% 53% / 0.45),
+    0 6px 40px hsl(221 83% 53% / 0.10);
+}
+
+/* ── Animated blue underline for nav links ── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 2px;
+  background: hsl(var(--primary));
+  transition: width 0.2s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ── Card hover lift ── */
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 32px hsl(221 83% 53% / 0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Section backgrounds ── */
+.section-light   { background: hsl(var(--background)); }
+.section-card    { background: hsl(var(--card)); }
+.section-surface { background: hsl(var(--surface)); }
+
+/* ── Sports grid pattern overlay ── */
+.section-sport {
+  position: relative;
+  overflow: hidden;
+}
+.section-sport::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(hsl(221 83% 53% / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(221 83% 53% / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+.section-sport > * { position: relative; z-index: 1; }
+
+/* ── Sport hero background ── */
+.hero-sport {
+  position: relative;
+  background: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(221 60% 20%) 60%, hsl(221 83% 30%) 100%);
+  overflow: hidden;
+}
+.hero-sport::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, hsl(221 83% 53% / 0.18) 0%, transparent 55%),
+    radial-gradient(circle at 80% 20%, hsl(24 95% 53% / 0.12) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-sport > * { position: relative; z-index: 1; }
+
+/* ── Divider line ── */
+.site-divider {
+  border-color: hsl(220 16% 88%);
+}
+
+/* ── Blue CTA badge ── */
+.cta-badge {
+  background: hsl(221 83% 53%);
+  color: hsl(0 0% 100%);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ── Orange score accent ── */
+.score-orange {
+  color: hsl(var(--accent));
+}
+
+/* ── Rank badge ── */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 0.875rem;
+  background: hsl(var(--primary));
+  color: hsl(0 0% 100%);
+  flex-shrink: 0;
+}
+.rank-badge.rank-2 { background: hsl(220 16% 60%); }
+.rank-badge.rank-3 { background: hsl(24 95% 53%); }
